@@ -16,4 +16,12 @@ class Product extends Model
         'price',
         'weight',
     ];
+
+    public function categories(){
+        return $this-> belongsToMany(Category::class);
+    }
+
+    public function typology(){
+        return $this-> belongsTo(Typology::class);
+    }
 }
