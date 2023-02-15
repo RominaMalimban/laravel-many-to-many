@@ -16,11 +16,11 @@ class MainController extends Controller
         return view('pages.home', compact('categories'));
     }
 
-    // METODO CON LISTA PRODOTTI:
+    // METODO CON LISTA PRODOTTI E LISTA CATEGORIE:
     public function products(){
 
         $products = Product:: all();
-        
+
         return view ('pages.product.home', compact('products'));
     }
 
@@ -28,8 +28,9 @@ class MainController extends Controller
     public function create(){
 
         $typologies = Typology::all();
+        $categories = Category:: all();
 
-        return view ('pages.product.create', compact('typologies'));
+        return view ('pages.product.create', compact('categories','typologies'));
     }
 
     // METODO PER RICEZIONE DATI DA FORM:
@@ -40,7 +41,8 @@ class MainController extends Controller
             'description' => 'nullable|string',
             'price' => 'required|integer',
             'weight' => 'required|integer',
-            'typology_id' => 'required|string'
+            'typology_id' => 'required|string',
+            'categories' => 'required|array'
         ]);
 
         // mi genero un codice randomico per non spaccare la pagina dal momento che non ho creato l'input per il code nel 
@@ -53,6 +55,9 @@ class MainController extends Controller
         $product -> typology()->associate($typology);
 
         $product -> save();
+
+        $categories = Category::find($data['categories']);
+        $product -> categories() -> attach ($categories);
 
         return redirect()-> route('product.home');
     }

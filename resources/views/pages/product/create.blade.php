@@ -23,7 +23,8 @@
                 <label for="weight">Enter the weight of the product</label>
                 <input type="number" class="form-control" name="weight">
             </div>
-
+            
+            {{-- select per scegliere la tipologia (1toMany)--}}
             <div class="form-group">
 
                 <label for="typology_id">Choose a typology</label>
@@ -33,8 +34,20 @@
                     @foreach ($typologies as $typology)
                         <option value="{{$typology -> id}}">{{$typology -> name}}</option>
                     @endforeach
-
                 </select>
+            </div>
+
+            {{-- checkbox per scegliere le categorie (ManytoMany)--}}
+            <div class="form-group">
+                @foreach ($categories as $category)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{$category -> id}}">
+                        <label class="form-check-label" for="categories[]">
+                            {{$category -> name}}
+                        </label>
+                    </div>
+                    
+                @endforeach
             </div>
 
             <input type="submit" class="btn btn-primary" value="Create">
