@@ -24,6 +24,19 @@
                 <input type="number" class="form-control" name="weight">
             </div>
 
+            <div class="form-group">
+
+                <label for="typology_id">Choose a typology</label>
+                <select class="form-select" aria-label="Default select example" name="typology_id">
+
+                    {{-- ciclo per stamparmi tutte le tipologie nelle options: --}}
+                    @foreach ($typologies as $typology)
+                        <option value="{{$typology -> id}}">{{$typology -> name}}</option>
+                    @endforeach
+
+                </select>
+            </div>
+
             <input type="submit" class="btn btn-primary" value="Create">
         </form>
     </div>

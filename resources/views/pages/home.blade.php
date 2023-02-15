@@ -26,4 +26,4 @@
             @endforeach
         </ul>
     @endforeach
-@endsection
+@endsection 
