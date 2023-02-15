@@ -5,7 +5,8 @@
     <div class="container">
         <h1>Create a new product</h1>
 
-        <form method="POST">
+        <form action="{{route('product.store')}}" method="POST">
+        @csrf
             <div class="form-group">
                 <label for="name">Enter the name of the product</label>
                 <input type="text" class="form-control" name="name">

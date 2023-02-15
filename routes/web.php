@@ -9,3 +9,7 @@ Route::get('/', [MainController::class, ('home')])
 // ROTTA PER IL FORM:
 Route:: get('/product/create', [MainController::class, 'create'])
     ->name('product.create');
+
+// ROTTA PER RICEZIONE DATI FORM:
+Route:: post('/product/create', [MainController:: class, 'productStore'])
+    ->name('product.store');

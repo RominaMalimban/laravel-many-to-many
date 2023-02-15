@@ -19,4 +19,10 @@ class MainController extends Controller
 
         return view ('pages.product.create');
     }
+
+    // METODO PER RICEZIONE DATI DA FORM:
+    public function productStore(Request $request){
+
+        $data= $request -> all();
+    }
 }
